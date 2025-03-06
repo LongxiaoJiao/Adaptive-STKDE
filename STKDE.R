@@ -352,10 +352,3 @@ TSTKDE_joint <- STKDE_result$TSTKDE
 ASTKDE_joint <- STKDE_result$ASTKDE
 
 ASTKDE_cond <- STKDE.cond.constructor(STKDE_result$ASTKDE, metric_list_half)
-
-
-
-#============================== TEST ================================
-
-t_points_matrix <- cbind(realDataFrame$X, realDataFrame$Y, realDataFrame$Z, rep(500,1257), rep(500,1257))
-test_STKDE_joint <- STKDE.joint.constructor.with.bandwidths(t_points_matrix, metric_list_half, parallel = FALSE)

@@ -606,22 +606,3 @@ Synthetic.local.ISE <- function(STKDE, raw_STKDE, xstep, ystep, time_unit) {
 synthetic_result_list <- Synthetic.result.list.constructor(metric_list,500)
 
 synthetic_result_list <- Synthetic.parallel(synthetic_result_list, metric_list, 5)
-
-#===================================TEST================================================
-
-t_points_matrix <- Synthetic.points(500,metric_list, synthetic_result_list$density_list)
-
-open3d()
-plot3d(x=t_points_matrix[,1],y=t_points_matrix[,2],z=t_points_matrix[,3],type="p",aspect = FALSE)
-
-
-open3d()
-persp3d(metric_list$grx,metric_list$gry,t(synthetic_result_list$density_list$xy_density[[20]]),
-        col="pink")
-persp3d(metric_list$grx+diff(metric_list$boundary_x),metric_list$gry,t(synthetic_result_list$density_list$xy_density[[90]]),
-        col="orange",add=TRUE)
-persp3d(metric_list$grx +2*diff(metric_list$boundary_x) ,metric_list$gry,t(synthetic_result_list$density_list$xy_density[[180]]),
-        col="lightblue", add= TRUE)
-
-test_result <- Synthetic.STKDE.PI.LIK.SCV(t_points_matrix, metric_list)
-rm(test_result)
