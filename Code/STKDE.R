@@ -346,7 +346,7 @@ STKDE.pointsmatrix.to.q <- function(grz_this, metric_list, t_points_matrix){
 
 #=============================== RUN CODE HERE ===================================
 
-STKDE_result <- STKDE.PI.constructor(realDataFrame,metric_list_half,parallel = TRUE)
+STKDE_result <- STKDE.PI.constructor(dataFrame,metric_list_half,parallel = TRUE)
 
 TSTKDE_joint <- STKDE_result$TSTKDE
 ASTKDE_joint <- STKDE_result$ASTKDE

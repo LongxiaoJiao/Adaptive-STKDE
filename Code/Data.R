@@ -18,15 +18,15 @@ library(misc3d)
 # recording all key parameters of the Spatiotemporal Cube.
 DATA.generate.metric.list <- function(dataset, plan_flag=c("full","half")){
   
-  boundary_x <- range(ZZBoundaryNEW2$X)
-  boundary_y <- range(ZZBoundaryNEW2$Y)
+  boundary_x <- range(Boundary$X)
+  boundary_y <- range(Boundary$Y)
   
   # obwindow option 1
   # obwindow <- owin(xrange=boundary_x,yrange = boundary_y)
   
   # obwindow option 2
   
-  obwindow <- owin(poly=list(x=ZZBoundaryNEW2$X,y=ZZBoundaryNEW2$Y))
+  obwindow <- owin(poly=list(x=Boundary$X,y=Boundary$Y))
   
   # obwindow is either the study area (an irregular closed polygon) or a regular rectangle.
   
@@ -137,11 +137,11 @@ para_c <- 5
 
 
 # dataframe of your real data, which contains X, Y, Z, at least.
-realDataFrame <- data.frame(
+dataFrame <- data.frame(
   
-  X = realDataset$X,
-  Y = realDataset$Y,
-  Z = realDataset$DATE * para_c
+  X = dataset$X,
+  Y = dataset$Y,
+  Z = dataset$DATE * para_c
   
 )
 
@@ -150,9 +150,9 @@ realDataFrame <- data.frame(
 # This dataframe stores all observation points, representing the complete set of both the training and test datasets.
 ALLdataframe <- data.frame(
   
-  X = ALLSTdataset$X,
-  Y = ALLSTdataset$Y,
-  DATE = ALLSTdataset$DATE * para_c
+  X = ALLdataset$X,
+  Y = ALLdataset$Y,
+  DATE = ALLdataset$DATE * para_c
   
 )
 
@@ -160,17 +160,17 @@ ALLdataframe <- data.frame(
 
 #=============================== Other Constants Need to Set  Before Start ===================================
 
-# 1st step : "order_2", "para_c", "realDataFrame", "ALLdataframe" need to be loaded in the Global Environment.
+# 1st step : "order_2", "para_c", "dataFrame", "ALLdataframe" need to be loaded in the Global Environment.
 #            The Excel file containing your study area needs to be loaded. It must include two columns: X and Y, representing a counterclockwise closed polygon.
 #            you need use your own real trivariate data.
 
 order_2
 para_c
-realDataFrame
+dataFrame
 ALLdataframe
 
 # 2nd step : metric_list (full or half) must be generated in the Global Environment
 # "As stated in the paper, we have two differentiation schemes, with spatial resolutions of ` full : c(50,50)` and `half : c(100,100)`, respectively."
-metric_list_half <- DATA.generate.metric.list(realDataset, plan_flag = "half")
-metric_list_full <- DATA.generate.metric.list(realDataset, plan_flag = "full")
+metric_list_half <- DATA.generate.metric.list(dataset, plan_flag = "half")
+metric_list_full <- DATA.generate.metric.list(dataset, plan_flag = "full")
 
