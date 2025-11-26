@@ -88,6 +88,8 @@ STKDE.joint.constructor.with.bandwidths <- function(t_points_matrix,metric_list,
     t_points_matrix_A <- t_points_matrix[1:mid, , drop = FALSE]
     t_points_matrix_B <- t_points_matrix[(mid+1):n, , drop = FALSE]
     
+    # below is the core part of TSTKDE & ASTKDE (parallel)
+    
     cl <- makeCluster(2)
     
     clusterExport(cl, varlist = c("DATA.integral3d","makeCluster","clusterExport","parLapply","stopCluster"))
