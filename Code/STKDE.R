@@ -49,11 +49,18 @@ STKDE.joint.constructor.with.bandwidths <- function(t_points_matrix,metric_list,
     
     STKDE <- array(0,metric_list$dimensionxyz[c(2,1,3)])
     
+    # below is the core part of TSTKDE & ASTKDE
     q <- apply(t_points_matrix,1,function(row) {
       
-      mx <- dnorm(grx,row[1],row[4])
-      my <- dnorm(gry,row[2],row[4])
+      mx <- dnorm(grx,row[1],row[4]) # dnorm in x direction, use the 4th column as bandwidth
+      my <- dnorm(gry,row[2],row[4]) # dnorm in y direction, use the 4th column as bandwidth (isotropy)
       mz <- dnorm(grz,row[3],row[5])
+      
+      
+      # or break the isotropy in the XY plane, use column 5 as Y bandwidth, use column 6 as temporal bandwidth
+      # my <- dnorm(gry,row[2],row[5]) 
+      # mz <- dnorm(grz,row[3],row[6])
+      
       
       my.mx <- outer(my,mx,"*")
       my.mx.mz <- outer(my.mx,mz,"*")
