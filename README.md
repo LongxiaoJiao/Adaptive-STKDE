@@ -2,7 +2,7 @@
 Performing STKDE with adaptive bandwidths (ASTKDE) in R.
 - <h1><strong>Introduction</strong></h1>
 
-&nbsp;&nbsp;&nbsp;&nbsp;This repository corresponds to the paper “*Urban Road Collapse Disaster Hotspot Analysis in Zhengzhou: A Novel Adaptive Bandwidth Spatiotemporal Kernel Density Estimation Method*”.  
+&nbsp;&nbsp;&nbsp;&nbsp;This repository corresponds to the paper “*Urban Road Collapse Disaster Hotspot Analysis in Zhengzhou, China: A Novel Adaptive Bandwidth Spatiotemporal Kernel Density Estimation Method*”.  DOI: 10.1061/JPCFEV.CFENG-5213.
 
 &nbsp;&nbsp;&nbsp;&nbsp;It includes the implementation of ASTKDE and TSTKDE, along with the code for all experiments presented in the paper. Results demonstrate that ASTKDE outperforms TSTKDE, particularly in the analysis of spatiotemporally inhomogeneous data.
 
